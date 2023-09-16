@@ -23,7 +23,7 @@ body{
 
 header{
     min-width: 100vw;
-    background-color: transparent;
+    background-color: white;
 }
 
 header nav{
@@ -37,11 +37,12 @@ header nav{
     display: flex;
     align-items: center;
     justify-content: flex-start; 
+    margin-right: 40%;
 }
 
 .logo-img{
-    height: 80px;
-
+    height: 120px;
+    width: 250px;
 }
 
 nav ul{
@@ -67,7 +68,7 @@ nav ul li a:hover{
 }
 
 .btn{
-    background-color: #01b671;
+    background-color: #f49a40;
     padding: 10px 25px;
     border-radius: 30px;
     color: black;
@@ -89,16 +90,25 @@ nav ul li a:hover{
 }
 
 .hero-box{
-    background-color: white;
+    background-color: lightskyblue;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
     padding: 40px 10px;
 }
 
 .left-box{
-    margin-left:40 px;
+    margin-left: 50px;
     padding: 50px 0;
+}
+
+.left-box h1{
+    margin-left: 10px;
+}
+
+.left-box p{
+    width: 70%;
+    padding: 10px 10px;
 }
 
 .started{
@@ -121,8 +131,8 @@ nav ul li a:hover{
     line-height: 44px;
 }
 
-span{
-    color: #60d48e;
+.left-box span{
+    color: green;
 }
 
 .left-para{
@@ -134,34 +144,46 @@ span{
     width: 500px;
 } 
 
-/*styling feature boxes and section*/
+.right-box{
+    margin-right: 60px;
+}
+
+/**************************************WHY SHOULD I USE E-LEARNING WEBSITE********************************************************/
+
 .feature{
    background-color: white;
-   height: 50vh;
-   padding: 0 100px;   /*padding of each section ill be same as much as needed*/
+   height: 60vh;
+   padding: 0px 100px;   /*padding of each section ill be same as much as needed*/
    display: flex;
    align-items: center;
    justify-content: space-around;
 }
 
+.feature-title .e-learning{
+    color: rgb(20 121 244);;
+}
 .feature-title{
+    height: 200px;
+    padding: 80px 80px;
+    background-color: white;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 200px;
-    color: #01b671;
+    margin-top: 100px;
+    color: black;
     font-size: 40px;
 }
 
 .boxes{
-    padding: 30px 40px;
+    background-color: white;
+    padding: 60px 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     border-radius: 6px;
     transition: 0.3s ease-in-out;
-    box-shadow: 0px 5px 15px #bdbdbd;
+    box-shadow: 0px 5px 15px #3a595b;
 }
 
 
@@ -184,31 +206,39 @@ span{
     text-align: center;
 }
 
-
-/*----------------styling tips section-----------*/
+.orange-circle-1{
+    position: absolute;
+    top: random;
+    left: random;
+    display: block;
+    width: 3%;
+}
+/*---------------- tips and trick section-----------*/
 
 .tips-top{
     padding: 0 0 100px 0; 
 }
 
 .tips-title{
+    padding: 30px 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 200px;
+    margin-top: 100px;
     color: black;
     font-size: 40px;
     background-color: white;
 }
 
 .tips-sec{
-    background-color: white;
+    background-color: lightskyblue;
     height: auto;
-    padding: 0px 150px;
+    padding: 10px 50px;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between; 
-    
+    justify-content: space-around; 
+    height: 150vh;
     
 }
 
@@ -222,49 +252,44 @@ span{
 
 
 
-.tips-main{
+.tips-head{
     display: flex;
-    flex-direction: column;
-    padding: 20px;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.tips-head .tips-info{
+    padding: 20px 20px;
+    margin-left: 50px;
+    font-size: 18px;
+    background-color: lightsalmon;
+    border-radius: 15px;
+    box-shadow: 2px 2px 5px rgb(83, 75, 75);
 }
 
 .tips-sec img{
     width: 150px;
     border-radius: 8px;
-    margin-bottom: 15px; 
-    margin-top: 15px;
-    margin-left: 15px;
-    
+   
 }
 
-
+.tips-post{
+    display: flex;
+}
 
 .tips-box{
     background-color: white;
-    padding: 5px 5px;
+    padding: 15px 25px;
     display: flex;
     flex-direction: column;
     align-items:left;
     justify-content: center;
     border-radius: 8px;
-    box-shadow: 2px 2px 5px rgb(177,177,177);
+    box-shadow: 2px 2px 5px rgb(83, 75, 75);
     transition: 0.3s ease-in-out;
     color: black;
     text-decoration: none;
-    margin: 10px; 
-}
-
-
-.tips-box-1 {
-    margin-inline-start: 80px;
-}
-
-.tips-box-2{
-    margin-inline-end: 80px;
-}
-
-.tips-box-3{
-    margin-left: 80px;
+    margin: 15px; 
 }
 
 .tips-box:hover{
@@ -279,24 +304,24 @@ span{
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 200px;
-    color: #01b671;
+    color: black;
     font-size: 40px;
+ 
 }
 
 .sponsor-sec{
-    background-color: white;
+    background-color: lightsalmon;
     height: auto;
-    padding: 0px 100px;
+    padding: 20px 100px;
     display: flex;
     align-items: center;
     justify-content: space-around; 
-    margin-top: 60px;
+    margin-top: 20px;
 }
 
 .sponsor-box{
     background-color: white;
-    padding: 20px 20px;
+    padding: 10px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -323,8 +348,7 @@ span{
 
 /*******************************FOOTER**************************************/
 footer{
-    background-color: lightgrey;
-    margin-top: 200px;
+    background-color: lightskyblue;
     height: 40vh;
    
     
@@ -379,7 +403,7 @@ footer{
 
 .end-box{
     display: flex;
-    background-color: lightgrey;
+    background-color: lightskyblue;
     align-items: center;
     justify-content: center;
 }
