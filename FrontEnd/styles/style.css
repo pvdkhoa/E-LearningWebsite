@@ -1,0 +1,271 @@
+*{
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    scroll-padding-top: 2rem;
+    box-sizing: border-box;
+}
+
+
+body{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+/*---- top navbar styling */
+.top-header{
+    background-color: white;
+    height:auto;
+    min-width: 100%;
+}
+
+header{
+    min-width: 100vw;
+    background-color: transparent;
+}
+
+header nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 100px;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.logo-img{
+    height: 80px;
+
+}
+
+nav ul{
+    list-style-type: none;
+
+}
+
+nav ul li{
+    display: inline-block;
+    margin: 0 15px;
+}
+
+nav ul li a{
+    text-decoration: none;
+    color: rgb(79, 78, 78);
+    font-weight: 600;
+    font-size:18px;
+    transition: 0.4s ease-in-out;
+}
+
+nav ul li a:hover{
+    color: black;
+}
+
+.btn{
+    background-color: #3385ff;
+    padding: 10px 25px;
+    border-radius: 30px;
+    color: black;
+    transition:0.4s ease-in-out;
+    text-decoration: none; /* need in future adjustment*/
+}
+
+.btn:hover{
+    background-color: #31a25e;
+}
+
+
+/************************* BODY OF HTML ******************/
+
+.banner {
+    background: #e6f2ff;
+    max-width: 100%;
+    height: 400px;
+    border-radius: 30px/80px;
+}
+.centerimage{
+    position: absolute;
+    right: 200px;
+    width: 300px;
+    padding: 10px;
+}
+.imageie{
+    max-width: 400px;
+    height: auto;
+}
+.banner text_box {
+    color: #111111;
+}
+.slogan {
+    font-size: 2.25rem;
+    padding: 100px 0;
+    margin-right:600px;
+    margin-bottom:200px;
+    margin-left:315px;
+}
+.banner li{
+    font-size: 14px;
+    color: rgb(75 85 99/var(--tw-text-opacity));
+}
+
+.hero-section{
+    min-width: 100vw;
+}
+
+.hero-box{
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 40px 10px;
+}
+
+.left-box{
+    margin-left:40px;
+    padding: 50px 0;
+}
+
+.started{
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.ready{
+    color: rgb(175, 25, 25);
+    margin-bottom: 8px;
+    font-weight: 700;
+    font-size: 36px;
+}
+
+.left-box h1{
+    font-size: 34px;
+    margin-bottom: 8px;
+    line-height: 44px;
+}
+
+span{
+    color: #60d48e;
+}
+
+.left-para{
+    margin-bottom: 40px;
+}
+
+/* styling right image of top section*/
+.right-img{
+    width: 500px;
+}
+
+/*styling feature boxes and section*/
+.feature{
+    background-color: white;
+    height: 50vh;
+    padding: 0 100px;   /*padding of each section ill be same as much as needed*/
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.feature-title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 200px;
+    color: #01b671;
+    font-size: 40px;
+}
+
+.boxes{
+    padding: 30px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 6px;
+    transition: 0.3s ease-in-out;
+    box-shadow: 0px 5px 15px #bdbdbd;
+}
+
+
+.boxes:hover{
+    box-shadow: 0px 5px 15px black;
+    cursor: pointer;
+    transform: scale(1.1);
+
+
+
+}
+
+
+.boxes h2{
+    font-size: 18px;
+    color: rgb(49,48,48);
+    margin: 5px 0;
+    text-align: center;
+}
+
+.boxes p{
+    color: rgb(131,131,131);
+    text-align: center;
+}
+
+
+/*----------------styling courses-----------*/
+
+.tips-top{
+    padding: 0 0 100px 0;
+}
+
+.tips-title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 200px;
+    color: #01b671;
+    font-size: 40px;
+}
+
+.tips-sec{
+    background-color: white;
+    height: auto;
+    padding: 0px 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 60px;
+
+}
+
+.tips-sec img{
+    width: 250px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    margin-left: 15px;
+
+}
+
+.tips-box{
+    background-color: white;
+    padding: 20px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-between;
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px rgb(177,177,177);
+    transition: 0.3s ease-in-out;
+    color: black;
+    text-decoration: none;
+
+}
+
+.tips-box:hover{
+    box-shadow: 0px 5px 15px #bdbdbd;
+    transform: scale(1.1);
+}
