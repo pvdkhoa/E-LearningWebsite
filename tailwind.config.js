@@ -12,7 +12,9 @@ export default {
       blueColor: '#004680',
       greenColor: '#34C364',
       white:'#FFF',
-      gray: '#73747C'
+      gray: '#73747C',
+      primaryBlue: '#0071F9',
+      primaryLightBlue: '#F5F6FA'
     }
   },
   plugins: [],

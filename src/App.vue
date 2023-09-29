@@ -1,9 +1,11 @@
 <script setup>
   import ExamPage from './components/ExamPage.vue';
+  import MainPage from './components/MainPage.vue';
 </script>
 
 <template>
-  <ExamPage></ExamPage>
+  <MainPage></MainPage>
+  <!-- <ExamPage></ExamPage> -->
 
 </template>
 

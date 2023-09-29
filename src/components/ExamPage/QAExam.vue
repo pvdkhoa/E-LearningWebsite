@@ -4,7 +4,7 @@
 
 <template>
     <div>
-        <div class="bg-primaryLightColor min-h-40 max-w-4xl mb-8 rounded-md">
+        <div class="bg-primaryLightColor md:max-w-xl lg:max-w-4xl lg:max-h-3xl mb-8 rounded-md">
             <div class="p-5">
                 <h2 class="text-white font-bold mb-3">Question 1</h2>
                 <p class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. A pariatur asperiores sint
@@ -15,7 +15,7 @@
             </div>
         </div>
 
-        <div class=" bg-primaryLightColor h-72 max-w-4xl rounded-md">
+        <div class=" bg-primaryLightColor h-72 md:max-w-xl lg:max-w-4xl rounded-md">
             <div class="p-5 ">
                 <div class="flex items-center mb-4">
                     <span class="h-10 w-10 rounded-full bg-gray flex items-center justify-center text-white">A</span>
