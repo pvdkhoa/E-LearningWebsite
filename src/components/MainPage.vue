@@ -1,9 +1,13 @@
 <script lang="ts" setup>
-    import TittleBar from './MainPage/TittleBar.vue';
-    import ContentMainPage from './MainPage/ContentMainPage.vue'
+import TittleBar from "./CommonPage/TittleBar.vue";
+import ContentMainPage from "./MainPage/ContentMainPage.vue";
+import FooterBar from "./CommonPage/FooterBar.vue";
 </script>
 
 <template>
-    <TittleBar></TittleBar>
+  <TittleBar></TittleBar>
+  <div class="mx-16">
     <ContentMainPage></ContentMainPage>
+  </div>
+  <FooterBar></FooterBar>
 </template>

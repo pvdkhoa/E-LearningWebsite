@@ -14,7 +14,9 @@ export default {
       white:'#FFF',
       gray: '#73747C',
       primaryBlue: '#0071F9',
-      primaryLightBlue: '#F5F6FA'
+      primaryLightBlue: '#F5F6FA',
+      primaryMediumBlue: '#EAF4FE',
+      red: '#E20D2C'
     }
   },
   plugins: [],

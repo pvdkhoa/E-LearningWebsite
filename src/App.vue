@@ -1,11 +1,12 @@
 <script setup>
-  import ExamPage from './components/ExamPage.vue';
-  import MainPage from './components/MainPage.vue';
+  // import ExamPage from './components/ExamPage.vue';
+  // import MainPage from './components/MainPage.vue';
+
+  import PracticePage from './components/PracticePage.vue';
 </script>
 
 <template>
-  <MainPage></MainPage>
-  <!-- <ExamPage></ExamPage> -->
+  <PracticePage></PracticePage>
 
 </template>
 

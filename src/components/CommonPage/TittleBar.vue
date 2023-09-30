@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <header class="px-6 bg-white sticky top-0 z-50 shadow-md">
+    <header class="px-12 bg-white sticky top-0 z-50 shadow-md">
         <div class="bg-gray-900 text-black p-2">
             <div class="flex items-center justify-between">
 
@@ -12,7 +12,7 @@
                     <div>
                         <img src="../../assets/images/logo.png" class="w-14 h-14" alt="">
                     </div> <!-- Replace with your logo -->
-                    <h1 class="hidden md:visible text-xl font-semibold">E-Learn</h1>
+                    <h1 class="text-xl font-semibold">E-Learn</h1>
                 </div>
                 
                 <!-- Items -->
@@ -25,7 +25,7 @@
 
                 <!-- Login Button -->
                 <button class=" bg-primaryBlue hover:bg-blue-600 text-white font-medium py-2 w-40 px-4 rounded-lg">
-                    Let's start <font-awesome-icon icon="arrow-right" class="ml-4" />
+                    Let's start  <font-awesome-icon icon="arrow-right" class="ml-4" />
                 </button>
             </div>
         </div>
