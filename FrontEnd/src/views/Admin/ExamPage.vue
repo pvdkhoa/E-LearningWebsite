@@ -36,18 +36,23 @@
               v-for="exam in examStore.filteredExam('Reading')"
               :key="exam.examID"
             >
+            <router-link :to="{name: 'QuestionPage',params: {id: exam.examID }}">
               <div
                 class="bg-grayDark w-full rounded-tl-xl rounded-tr-xl flex justify-center items-center"
               >
+              
                 <img src="../../assets/images/reading.svg" alt="" class="w-[50%] h-[50%]" />
-              </div>
+              </div>   
+            </router-link>       
               <div class="p-3 lg:p-4 xl:p-5">
                 <div class="flex justify-between">
                   <div class="flex items-center">
                     <img src="../../assets/images/file.png" alt="" class="w-6 h-6 mr-2" />
-                    <h2 class="font-bold text-lg md:text-xl text-center">
+                    <router-link :to="{name: 'QuestionPage',params: {id: exam.examID }}">
+                      <h2 class="font-bold text-lg md:text-xl text-center">
                       {{ exam.title }}
-                    </h2>
+                    </h2></router-link>
+                    
                   </div>
                   <div
                     class="flex flex-col xl:flex-row items-center bg-grayLight rounded-lg shadow-lg p-2 cursor-pointer"
@@ -435,8 +440,8 @@
   
   <script setup>
   import { ref, onMounted, computed } from "vue";
-  import GenerateExamModal from "./GenerateExamModal.vue";
-  import UpdateExamModal from "./UpdateExamModal.vue";
+  import GenerateExamModal from "../../components/Admin/ExamPage/GenerateExamModal.vue";
+  import UpdateExamModal from "../../components/Admin/ExamPage/UpdateExamModal.vue";
   
   import { useExamStore } from "../../store/exam";
   
@@ -506,7 +511,7 @@
   const handleSubmitDelete = async(examid) => {
     await examStore.deleteExam(examid);
     resetForm();
-  
+    
   }
   
   const openExamSettings = (examID) => {

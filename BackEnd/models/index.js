@@ -34,6 +34,7 @@ db.sequelize = sequelize
 //model nào muốn sử dụng database thì khai báo ở đây
 db.exams = require('./examModel.js')(sequelize,DataTypes)
 db.questions = require('./questionModel.js')(sequelize,DataTypes)
+db.answers = require('./answerModel.js')(sequelize,DataTypes)
 
 
 //Mỗi khi khởi động lại server mất toàn bộ data nếu force = false

@@ -1,14 +1,19 @@
 <script setup>
   // import ExamPage from './components/ExamPage.vue';
-  // import MainPage from './components/MainPage.vue';
+  import MainPage from './views/User/MainPage.vue';
 
-  import PracticePage from './components/User/PracticePage.vue';
-  import Exam from './components/Admin/Exam.vue';
+  import PracticePage from './views/User/PracticePage.vue';
+  import Exam from './views/Admin/ExamPage.vue';
+  import QuestionPage from './views/Admin/QuestionPage.vue';
 </script>
 
 <template>
-  <!-- <PracticePage></PracticePage> -->
-  <Exam></Exam>
+  
+  
+  
+
+  <router-view></router-view>
+
 </template>
 
 

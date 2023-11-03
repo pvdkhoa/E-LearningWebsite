@@ -25,7 +25,7 @@ export const useExamStore = defineStore('examStore', {
     async updateExam(examID, updatedExamData) {
       try {
         // Send a request to the API to update the exam
-        const response = await examService.updateExam(examID, updatedExamData);
+        const response = await examService.updateExam(examID,updatedExamData);
 
         if (response.status === 200) {
           // Find the index of the exam to update in the local exams array

@@ -16,8 +16,10 @@ app.use(express.urlencoded({ extended: true }));
 
 const routerExam = require('./routes/examRouter.js')
 const routerQuestion = require('./routes/questionRouter.js')
+const routerAnswer = require('./routes/answerRouter.js')
 app.use('/api/exam',routerExam)
 app.use('/api/question',routerQuestion)
+app.use('/api/answer',routerAnswer)
 
 // Testing API
 const PORT = process.env.PORT || 8080;

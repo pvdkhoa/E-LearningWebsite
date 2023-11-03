@@ -29,24 +29,7 @@ const getAllExams = async (req, res) => {
 }
 
 const updateExam = async (req, res) => {
-  // let id = req.params.id;
-  // const exam = await Exam.update(req.body,{where:{examID:id}});
-  // res.status(200).send(exam);
-  // try {
-  //   const id = req.params.id;
-  //   const updatedExam = await Exam.update(req.body, { where: { examID: id } });
-
-  //   if (updatedExam[0] === 0) {
-  //     // The update did not affect any rows, likely because the examID doesn't exist
-  //     console.log(`Exam with ID ${id} does not exist.`);
-  //     return res.status(404).send(`Exam with ID ${id} does not exist.`);
-  //   }
-
-  //   res.status(200).send(updatedExam);
-  // } catch (error) {
-  //   console.log(error);
-  //   res.status(500).send('An error occurred while updating the exam.');
-  // }
+  
   try {
     const id = req.params.id;
     const [updatedCount] = await Exam.update(req.body, { where: { examID: id } });
@@ -65,16 +48,6 @@ const updateExam = async (req, res) => {
 
 //5. Delete product
 const deleteExam = async (req, res) => {
-
-  // try {
-  //   let id = req.params.id
-  //   await Exam.destroy({where: {examID:id}})
-  //   res.status(200).send('Exam is deleted');
-  // } catch(error){
-  //   console.log(error);
-  //   res.status(500).send('Can not delete');
-  // }
-
   try {
     const id = req.params.id;
 

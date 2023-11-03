@@ -2,14 +2,14 @@
     <Teleport to="body">
       <div
         v-show="updateModalActive"
-        class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-30"
+        class="fixed inset-1 flex items-center justify-center bg-black bg-opacity-30"
       >
         <div
           v-if="updateModalActive"
-          class="p-4 bg-white self-start w-1/4 rounded-xl mt-24"
+          class="p-4 bg-white self-start w-1/4 rounded-xl mt-4"
         >
           <button
-            class="text-white bg-grayDark py-2 px-6 rounded-lg"
+            class="text-white bg-grayDark py-2 px-6 rounded-lg "
             @click="$emit('close-updateModal')"
           >
             Close

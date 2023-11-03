@@ -3,10 +3,10 @@ const router = require('express').Router()
 
 router.post('/addQuestion',questionController.createQuestion);
 
-router.get('/getAllQuestions',questionController.getAllQuestions);
+router.patch('/updateQuestion/:questID',questionController.updateQuestion);
 
-router.patch('/updateQuestion/:id',questionController.updateQuestion);
+router.delete('/deleteQuestion/:questID',questionController.deleteQuestion);
 
-router.delete('/deleteQuestion/:id',questionController.deleteQuestion);
+router.get('/getQuestions/:examID',questionController.getQuestionsInExam);
 
 module.exports = router
