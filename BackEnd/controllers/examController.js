@@ -1,6 +1,9 @@
 const db = require('../models');
+const { QueryTypes } = require('sequelize');
 
 const Exam = db.exams;
+const Answer = db.answers;
+const Question = db.questions;
 
 // 1. Create product
 const createExam = async (req, res) => {
@@ -28,8 +31,8 @@ const getAllExams = async (req, res) => {
   res.send(exams);
 }
 
+// 2.UpdateExam
 const updateExam = async (req, res) => {
-  
   try {
     const id = req.params.id;
     const [updatedCount] = await Exam.update(req.body, { where: { examID: id } });
@@ -46,14 +49,23 @@ const updateExam = async (req, res) => {
   }
 }
 
-//5. Delete product
+//3.Delete Exam
 const deleteExam = async (req, res) => {
   try {
-    const id = req.params.id;
+    const id = req.params.examID;
 
-    const deletedCount = await Exam.destroy({ where: { examID: id } });
+    const isExamID = await Exam.findByPk(id)
+    if(!isExamID){
+      return res.status(400).send('Invalid or non-existent examID.');
+    }
+    // Nếu xóa  Exam thì cần xóa Question và cả Answer bên trong.
+    const deletedAnswer = await  Answer.destroy({where: {examID: id}})
 
-    if (deletedCount === 0) {
+    const deletedQuestion = await Question.destroy({where: {examID: id}});
+
+    const deletedExam = await Exam.destroy({ where: { examID: id } });
+
+    if (deletedExam === 0 || deletedQuestion === 0 || deletedAnswer === 0) {
       console.log(`Exam with ID ${id} does not exist.`);
       return res.status(404).send(`Exam with ID ${id} does not exist.`);
     }
@@ -63,20 +75,13 @@ const deleteExam = async (req, res) => {
     console.log(error);
     res.status(500).send('An error occurred while deleting the exam.');
   }
-
 }
 
-const getOneExam = async (req, res) => {
-  let id = req.params.id
-  let exam = await Exam.findOne({ where: { examID: id } });
-  res.status(200).send(exam);
-}
 
 
 module.exports = {
   createExam,
   getAllExams,
   updateExam,
-  deleteExam,
-  getOneExam
+  deleteExam
 }

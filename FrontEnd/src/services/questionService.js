@@ -1,9 +1,17 @@
 import  questionApi  from './apiQuestion'
 
 export default {
-    creatQuestion(question){
-        return questionApi().post('/addQuestion',question)
-        // return Api().
+    creatQuestion(examID,question){
+        return questionApi().post(`addQuestion/${examID}`,question)
+    },
+    getQuestionInExam(examID){
+        return questionApi().get(`getQuestions/${examID}`)
+    },
+    deleteQuestion(questionID){
+        return questionApi().delete(`deleteQuestion/${questionID}`)
+    },
+    getLimitQuest(examID){
+        return questionApi().get(`checkLimitQuest/${examID}`)
     }
-
+    
 }

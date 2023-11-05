@@ -6,6 +6,7 @@ export const useExamStore = defineStore('examStore', {
   state: () => ({
     exams: [],
     choosedExam:[],
+    validateEdit: [],
   }),
   getters: {
     totalExam() {
@@ -60,6 +61,15 @@ export const useExamStore = defineStore('examStore', {
         this.exams = response.data;
       } catch (error) {
         console.error(error);
+      }
+    },
+    async getQuestInExam(examID){
+      try{
+        const response = await examService.getNumOfQuest(examID);
+        this.validateEdit = response.data
+        console.log("GET data successful: ", response.data);
+      }catch(error){
+        console.log("GET data failed: ", error);
       }
     },
     filteredExam(status) {

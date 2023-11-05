@@ -1,4 +1,5 @@
 import Api from './apiExam'
+import questionAPI from './apiQuestion'
 
 export default {
     getAllExams () {
@@ -18,6 +19,9 @@ export default {
     // }
     updateExam(examID, updatedExamData) {
       return Api().patch(`updateExam/${examID}`, updatedExamData);
+    },
+    getNumOfQuest(examID){
+      return questionAPI().get(`checkLimitQuest/${examID}`)
     }
 
 }

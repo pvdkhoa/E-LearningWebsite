@@ -7,8 +7,6 @@ router.get('/getAllExams',examController.getAllExams);
 
 router.patch('/updateExam/:id',examController.updateExam);
 
-router.delete('/deleteExam/:id',examController.deleteExam);
-
-router.get('/getExam/:id',examController.getOneExam);
+router.delete('/deleteExam/:examID',examController.deleteExam);
 
 module.exports = router

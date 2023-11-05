@@ -50,26 +50,6 @@ const updateAnswer = async (req, res) => {
 }
 
 
-
-// 3.Delete Answer
-// const deleteAnswer = async (req, res) => {
-//     try {
-//       const id = req.params.id;
-  
-//       const deletedCount = await Answer.destroy({ where: { answerID: id } });
-  
-//       if (deletedCount === 0) {
-//         console.log(`Answer with ID ${id} does not exist.`);
-//         return res.status(404).send(`Answer with ID ${id} does not exist.`);
-//       }
-  
-//       res.status(200).send('Answer is deleted');
-//     } catch (error) {
-//       console.error(error);
-//       res.status(500).send('An error occurred while deleting the Answer.');
-//     }
-//   };
-
 module.exports = {
     createAnswer,
     updateAnswer,

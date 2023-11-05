@@ -167,18 +167,27 @@
         </div>
       </ReadingModal>
 
+      <ErrorLimitQuestion :error-modal-active="isModalErrorActive"
+        @close-modal="toggleErrorModal">
+        <div class="flex  flex-col justify-center items-center h-full">
+          <img
+            src="../../assets/images/warning.png"
+            class="w-20 h-20 md:w-28 md:h-28"
+            alt=""
+          />
+          <h1 class="font-bold text-center text-md md:text-xl mt-4">
+            Can not Create more Question because at limit !!!
+          </h1>
+        </div>
+      </ErrorLimitQuestion>
+
       <!-- Phần câu phỏi -->
       <div class="flex flex-col justify-center items-center mt-6">
-        <div class="w-1/2 bg-[#e9e8e8] rounded-xl p-8 mt-6 shadow-xl">
+        <div class="w-1/2 bg-[#e9e8e8] rounded-xl p-8 mt-6 shadow-xl " v-for="(question, index) in questionStore.filteredQuestion(route.params.id)" :key="question.questionID">
           <div class="flex justify-between items-center">
-            <h1 class="font-bold text-3xl">Question 1</h1>
+            <h1 class="font-bold text-3xl">Question {{ index + 1 }}</h1>
             <div class="flex items-center">
-              <!-- <img
-                src="../../assets/images/setting.png"
-                alt=""
-                class="mr-4 w-8 h-8 cursor-pointer"
-                @click="toggleModal"
-              /> -->
+              
               <div
                     class="flex flex-col xl:flex-row items-center bg-grayLight rounded-lg shadow-lg p-2 cursor-pointer"
                     @click="toggleModal"
@@ -198,9 +207,7 @@
             </div>
           </div>
           <h2 class="mt-4 text-xl font-medium">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-            Consequuntur quisquam fuga fugit sit et qui, illo rerum molestias
-            commodi quam suscipit! Aliquam, reiciendis?
+            {{ question.questionText }}
           </h2>
           <div class="flex items-center mt-4">
             <span
@@ -208,7 +215,7 @@
             >
               A
             </span>
-            <p class="ml-4 text-lg">Answer 1</p>
+            <p class="ml-4 text-xl">{{ question.option1 }}</p>
           </div>
           <div class="flex items-center mt-4">
             <span
@@ -216,7 +223,7 @@
             >
               B
             </span>
-            <p class="ml-4 text-lg">Answer 2</p>
+            <p class="ml-4 text-xl">{{ question.option2 }}</p>
           </div>
           <div class="flex items-center mt-4">
             <span
@@ -224,7 +231,7 @@
             >
               C
             </span>
-            <p class="ml-4 text-lg">Answer 3</p>
+            <p class="ml-4 text-xl">{{ question.option3 }}</p>
           </div>
           <div class="flex items-center mt-4">
             <span
@@ -232,7 +239,7 @@
             >
               D
             </span>
-            <p class="ml-4 text-lg">Answer 4</p>
+            <p class="ml-4 text-xl">{{ question.option4 }}</p>
           </div>
         </div>
       </div>
@@ -243,10 +250,11 @@
 
 <script setup>
 import ReadingModal from "../../components/Admin/QuestionPage/ReadingModal.vue";
+import ErrorLimitQuestion from "../../components/ErrorHandle/ErrorLimitQuest.vue"
 import { useQuestionStore } from "../../store/question";
 import { useRoute } from 'vue-router';
 
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 const modalActive = ref(null);
 
 const answer = ref(null);
@@ -260,11 +268,16 @@ const questionStore = useQuestionStore();
 
 const route = useRoute(); // Access the route object with useRoute
 
-
+const limitQuestion = questionStore.validateQuestion.limitQuest;
+const questInExam = questionStore.validateQuestion.questInExam;
 
 const handleSubmidAdd = async() => {
-  
-  await questionStore.addQuestion({
+  if(questInExam >= limitQuestion){
+    resetForm();
+    toggleModal();
+    toggleErrorModal();
+  }else{
+    const data = {
     questionID: questionStore.randomQuestionID(),
     examID: Number(route.params.id),
     questionText: question.value,
@@ -274,9 +287,12 @@ const handleSubmidAdd = async() => {
     option4: option4.value,
     correctAnswer: answer.value,
     answerID: questionStore.randomAnswerID()
-  })
+  }
+  console.log(data);
+  await questionStore.addQuestion(Number(route.params.id),data)
   resetForm();
   toggleModal();
+  }
 }
 
 
@@ -289,9 +305,21 @@ const resetForm = () => {
   question.value = ""
 }
 
+onMounted(async () => {
+  await questionStore.getQuestionInExam(Number(route.params.id));
+  await questionStore.getLimitQuest(Number(route.params.id));
+});
+
+
 const toggleModal = () => {
   //Hàm cho phép đóng và mở modal
   modalActive.value = !modalActive.value;
+};
+
+const isModalErrorActive = ref(null);
+
+const toggleErrorModal = () => {
+  isModalErrorActive.value = !isModalErrorActive.value;
 };
 </script>
 

@@ -434,6 +434,21 @@
             </div>
           </div>
         </UpdateExamModal>
+
+        <ErrorLimitQuestion :error-modal-active="isModalErrorActive"
+        @close-modal="toggleErrorModal">
+        <div class="flex  flex-col justify-center items-center h-full">
+          <img
+            src="../../assets/images/warning.png"
+            class="w-20 h-20 md:w-28 md:h-28"
+            alt=""
+          />
+          <h1 class="font-bold text-center text-md md:text-xl mt-4">
+            Can not Edit numberQuestion less than number question has been in Exam
+          </h1>
+        </div>
+      </ErrorLimitQuestion>
+
       </div>
     </div>
   </template>
@@ -442,7 +457,7 @@
   import { ref, onMounted, computed } from "vue";
   import GenerateExamModal from "../../components/Admin/ExamPage/GenerateExamModal.vue";
   import UpdateExamModal from "../../components/Admin/ExamPage/UpdateExamModal.vue";
-  
+  import ErrorLimitQuestion from "../../components/ErrorHandle/ErrorLimitQuest.vue";
   import { useExamStore } from "../../store/exam";
   
   
@@ -466,6 +481,12 @@
   
   const examStore = useExamStore();
   
+  const isModalErrorActive = ref(null);
+
+const toggleErrorModal = () => {
+  isModalErrorActive.value = !isModalErrorActive.value;
+};
+
   onMounted(async () => {
     await examStore.getAllExams();
   });
@@ -495,17 +516,28 @@
   };
   
   const handleSubmitUpdate = async (examid) => {
-    if (titleExam.value !== "" && selectedExam.value !== "") {
-      await examStore.updateExam(examid, {
-        title: titleExam.value,
-        duration: duration.value,
-        numberQuestion: numberQuestion.value,
-        examStatus: selectedExam.value,
-      });
+    await examStore.getQuestInExam(examid);
+    const questInExam = examStore.validateEdit.questInExam;
+    console.log(questInExam)
+    if(numberQuestion.value < questInExam){
       resetForm();
       toggleUpdateModal();
-      examStore.getAllExams();
+      toggleErrorModal();
     }
+    else{
+        if (titleExam.value !== "" && selectedExam.value !== "") {
+        await examStore.updateExam(examid, {
+          title: titleExam.value,
+          duration: duration.value,
+          numberQuestion: numberQuestion.value,
+          examStatus: selectedExam.value,
+        });
+        resetForm();
+        toggleUpdateModal();
+        examStore.getAllExams();
+      }
+    }
+    
   };
   
   const handleSubmitDelete = async(examid) => {
@@ -514,10 +546,12 @@
     
   }
   
-  const openExamSettings = (examID) => {
+  const openExamSettings = async(examID) => {
     examStore.choosedExam = [];
   
     examStore.selectExamToUpdate(examID);
+
+    
   
     titleExam.value = examStore.choosedExam[0].title;
     selectedExam.value = examStore.choosedExam[0].examStatus;
