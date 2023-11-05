@@ -1,5 +1,6 @@
 const db = require('../models');
 const { QueryTypes } = require('sequelize');
+const { updateAnswer } = require('./answerController');
 
 const Question = db.questions;
 const Exam = db.exams;
@@ -130,27 +131,63 @@ const deleteQuestion = async (req, res) => {
 
 // 4. Update question + answer
 
+// 
+
 const updateQuestion = async (req, res) => {
   try {
     const id = req.params.questID;
-    const isQuestID = await Question.findByPk(id);
-    if (!isQuestID) {
-      return res.status(404).send('Invalid or non-existent questionID.');
+    if (!id) {
+      return res.status(400).send('Invalid question ID.');
     }
 
-    const [updatedQuestion] = await Question.update(req.body, { where: { questionID: id } });
-    const [updatedAnswer] = await Answer.update(req.body, { where: { questionID: id } });
+    const isQuestID = await Question.findByPk(id);
+
+    if (!isQuestID) {
+      return res.status(404).send('Question with the provided ID does not exist.');
+    }
+
+    const {
+      questionID,
+      option1,
+      option2,
+      option3,
+      option4,
+      attach,
+      questionText,
+      correctAnswer,
+    } = req.body;
+
+    if (!questionID || !questionText || !correctAnswer) {
+      return res.status(400).send('Missing required fields in the request body.');
+    }
+
+    const dataQuest = {
+      questionID,
+      questionText,
+      option1,
+      option2,
+      option3,
+      option4,
+      attach,
+    };
+
+    const dataAns = {
+      questionID, 
+      correctAnswer,
+    };
+
+    const [updatedQuestion] = await Question.update(dataQuest, { where: { questionID: id } });
+    const [updatedAnswer] = await Answer.update(dataAns, { where: { questionID: id } });
+
     if (updatedQuestion === 0 && updatedAnswer === 0) {
-      console.log(`Question with ID ${id} does not exist.`);
       return res.status(404).send(`Question with ID ${id} does not exist.`);
     }
-    res.status(200).send(`Question with ID ${id} is updated`);
-
+    res.status(200).send(`Question with ID ${id} has been updated`);
   } catch (error) {
-    console.log(error);
+    console.error(error);
     res.status(500).send('An error occurred while updating the question.');
   }
-}
+};
 
 // 5. Get NumberOfQuestionInExam
 const getLimitQuest = async(req,res) =>{

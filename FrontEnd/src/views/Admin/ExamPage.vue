@@ -542,8 +542,8 @@ const toggleErrorModal = () => {
   
   const handleSubmitDelete = async(examid) => {
     await examStore.deleteExam(examid);
-    resetForm();
-    
+    // resetForm();
+    examStore.getAllExams()
   }
   
   const openExamSettings = async(examID) => {
@@ -551,8 +551,6 @@ const toggleErrorModal = () => {
   
     examStore.selectExamToUpdate(examID);
 
-    
-  
     titleExam.value = examStore.choosedExam[0].title;
     selectedExam.value = examStore.choosedExam[0].examStatus;
     numberQuestion.value = examStore.choosedExam[0].numberQuestion;

@@ -9,5 +9,6 @@ router.delete('/deleteQuestion/:questID',questionController.deleteQuestion);
 
 router.get('/getQuestions/:examID',questionController.getQuestionsInExam);
 
-router.get('/checkLimitQuest/:examID',questionController.getLimitQuest)
+router.get('/checkLimitQuest/:examID',questionController.getLimitQuest);
+
 module.exports = router

@@ -12,6 +12,8 @@ export default {
     },
     getLimitQuest(examID){
         return questionApi().get(`checkLimitQuest/${examID}`)
+    },
+    updateQuestion(questionID, questDataUpdate){
+        return questionApi().patch(`updateQuestion/${questionID}`, questDataUpdate)
     }
-    
 }

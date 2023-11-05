@@ -14,9 +14,6 @@ export default {
     deleteExam(examID){
       return Api().delete(`deleteExam/${examID}`)
     },
-    // updateExam(examID){
-    //   return Api().put(`updateExam/${examID}`)
-    // }
     updateExam(examID, updatedExamData) {
       return Api().patch(`updateExam/${examID}`, updatedExamData);
     },

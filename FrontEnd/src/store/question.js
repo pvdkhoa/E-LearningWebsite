@@ -27,6 +27,28 @@ export const useQuestionStore = defineStore('questionStore', {
         console.log("Error to create: ", err);
       }
     },
+    async updateQuestion(questionID, questDataUpdate) {
+      try {
+        // Send a request to the API to update the exam
+        const response = await questionService.updateQuestion(questionID,questDataUpdate);
+
+        if (response.status === 200) {
+          // Find the index of the exam to update in the local exams array
+          const questionIndex = this.questions.findIndex((question) => question.questionID === questionID);
+
+          if (questionIndex !== -1) {
+            // Update the local exam with the new data
+            this.questions[questionIndex] = response.data;
+          } else {
+            console.error('Question not found in the local store.');
+          }
+        } else {
+          console.error('Update quest request failed.');
+        }
+      } catch (error) {
+        console.error('Error updating the quest:', error);
+      }
+    },
     async getQuestionInExam(examID){
       try{
         const response =await questionService.getQuestionInExam(examID);
@@ -44,6 +66,14 @@ export const useQuestionStore = defineStore('questionStore', {
         console.log("GET data successful: ", response.data);
       }catch(error){
         console.log("GET data failed: ", error);
+      }
+    },
+    async deleteQuestion(questionID){
+      try{
+        const response = await questionService.deleteQuestion(questionID);
+        console.log("Delete question successful: ",response.data);
+      }catch(error){
+        console.log("Delete question failed: ",error);
       }
     },
     filteredQuestion(examID) {
@@ -71,6 +101,14 @@ export const useQuestionStore = defineStore('questionStore', {
       const randomID = Number(formattedTime) - Math.floor(Math.random() * (1773));
       return randomID;
     },
+    selectQuestionToUpdate(questionID){
+      console.log(questionID);
+      console.log(this.questions)
+      const selectedQuestion = this.questions.find((question) => question.questionID === questionID);
+      this.choosedQuestion.push(selectedQuestion)
+      console.log(this.choosedQuestion)
+      
+    }
   }
 })
 
