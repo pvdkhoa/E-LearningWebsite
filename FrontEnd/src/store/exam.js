@@ -7,6 +7,7 @@ export const useExamStore = defineStore('examStore', {
     exams: [],
     choosedExam:[],
     validateEdit: [],
+    exam: []
   }),
   getters: {
     totalExam() {
@@ -15,6 +16,16 @@ export const useExamStore = defineStore('examStore', {
 
   },
   actions: {
+    async getExam(examID){
+      try{
+        const response = await examService.getExam(examID);
+        this.exam = response.data;
+        console.log("Get Data successful: ",response.data);
+      }catch(error) { 
+        console.log("Get Data exam failed: ",error);
+      }
+    }
+    ,
     async deleteExam(examID){
       try{
         const response =await examService.deleteExam(examID);
@@ -59,6 +70,7 @@ export const useExamStore = defineStore('examStore', {
       try {
         const response = await examService.getAllExams();
         this.exams = response.data;
+        console.log(response.data)
       } catch (error) {
         console.error(error);
       }
@@ -91,7 +103,6 @@ export const useExamStore = defineStore('examStore', {
       const choosedExam = this.exams.find((exam) => exam.examID === examID);
       this.choosedExam.push(choosedExam)
       console.log(this.choosedExam)
-      
     }
 
   }

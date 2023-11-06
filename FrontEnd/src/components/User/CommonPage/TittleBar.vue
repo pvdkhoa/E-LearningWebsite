@@ -17,9 +17,13 @@
                 
                 <!-- Items -->
                 <ul class=" flex space-x-4 ">
-                    <li><a href="#" class="hover:text-primaryLightColor font-medium px-6 text-lg">Home</a></li>
+                    <router-link :to="{name: 'HomePage'}">
+                        <li><a href="#" class="hover:text-primaryLightColor font-medium px-6 text-lg">Home</a></li>
+                    </router-link>
                     <li><a href="#" class="hover:text-primaryLightColor font-medium px-6 text-lg">Course</a></li>
-                    <li><a href="#" class="hover:text-primaryLightColor font-medium px-6 text-lg">Practice</a></li>
+                    <router-link :to="{name: 'PracticePage'}">
+                        <li><a href="#" class="hover:text-primaryLightColor font-medium px-6 text-lg">Practice</a></li>
+                    </router-link>
                     <li><a href="#" class="hover:text-primaryLightColor font-medium px-6 text-lg">Blog</a></li>
                 </ul>
 

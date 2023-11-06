@@ -3,19 +3,7 @@
 </script>
 
 <template>
-    <!-- <div class="" >
-        
-        <div class="bg-primaryLightBlue flex justify-between">
-            <div class="text-center">
-                <h1 class="text-black text-4xl font-bold">Platform</h1>
-                <h1 class="text-primaryBlue text-4xl font-bold">Learn English Online</h1>
-                <h1 class="text-black text-4xl font-bold"> Easy and Useful</h1>
-            </div>
-            <div class="w-50 h-50">
-                <img src="../../../assets/images/introImg.svg" alt="" >
-            </div>
-        </div>
-    </div> -->
+    
     <div class="bg-white">
         <!-- Introduction -->
         <div class="flex flex-col md:flex-row">

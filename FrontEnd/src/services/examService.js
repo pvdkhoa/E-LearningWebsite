@@ -19,6 +19,9 @@ export default {
     },
     getNumOfQuest(examID){
       return questionAPI().get(`checkLimitQuest/${examID}`)
+    },
+    getExam(examID){
+      return Api().get(`getExam/${examID}`)
     }
 
 }

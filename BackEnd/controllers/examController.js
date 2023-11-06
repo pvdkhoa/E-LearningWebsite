@@ -27,9 +27,25 @@ const createExam = async (req, res) => {
 
 // 2. Get all exam
 const getAllExams = async (req, res) => {
-  let exams = await Exam.findAll({});
+  const exams = await Exam.findAll({});
   res.send(exams);
 }
+
+const getExam = async (req, res) => {
+  try {
+    const examid = req.params.examID; 
+    const exam = await Exam.findByPk(examid);
+
+    if (!exam) {
+      return res.status(404).json({ message: 'Exam not found' });
+    }
+
+    res.status(200).json(exam);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'An error occurred while retrieving the exam.' });
+  }
+};
 
 // 2.UpdateExam
 const updateExam = async (req, res) => {
@@ -83,5 +99,6 @@ module.exports = {
   createExam,
   getAllExams,
   updateExam,
-  deleteExam
+  deleteExam,
+  getExam
 }

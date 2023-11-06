@@ -1,6 +1,6 @@
 const db = require('../models');
 const { QueryTypes } = require('sequelize');
-const { updateAnswer } = require('./answerController');
+
 
 const Question = db.questions;
 const Exam = db.exams;
