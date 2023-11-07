@@ -23,7 +23,9 @@ export default {
       grayLight: '#D1D5DB',
       grayDark: '#4B5563',
       black: '#000',
-      red: '#E3242B'
+      red: '#E3242B',
+      greenDark: '#327846',
+      greenLight: '#D7E6DC'
     }
   },
   plugins: [],

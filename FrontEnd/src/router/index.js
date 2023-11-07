@@ -6,6 +6,7 @@ import PracticePage from '../views/User/PracticePage.vue'
 import QuizPage from '../views/User/QuizPage.vue'
 import { useExamStore } from '../store/exam'
 import { useQuestionStore } from '../store/question'
+import ResultPage from '../views/User/ResultPage.vue'
 
 const routes = [
     {
@@ -49,6 +50,11 @@ const routes = [
         path: '/exam/:id',
         name: 'QuestionPage',
         component: QuestionPage
+    },
+    {
+        path: '/result',
+        name: 'ResultPage',
+        component: ResultPage
     }
 
 ]
