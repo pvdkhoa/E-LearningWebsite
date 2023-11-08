@@ -36,11 +36,20 @@ db.exams = require('./examModel.js')(sequelize,DataTypes)
 db.questions = require('./questionModel.js')(sequelize,DataTypes)
 db.answers = require('./answerModel.js')(sequelize,DataTypes)
 
+db.user = require("../models/userModel.js")(sequelize,DataTypes);
+db.role = require("../models/roleModel.js")(sequelize,DataTypes);
 
-//Mỗi khi khởi động lại server mất toàn bộ data nếu force = false
-db.sequelize.sync({force:false})
-.then(()=>{
-    console.log('yes re-sync done!');
-})
+db.role.belongsToMany(db.user, {
+    through: "user_roles"
+});
+db.user.belongsToMany(db.role, {
+    through: "user_roles"
+});
+
+
+db.ROLES = ["user","admin"]
+
+
+
 
 module.exports = db
